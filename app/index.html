@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Dixte Reader - v0.0.1</title>
+
+	<link rel="stylesheet" href="css/reader.css">
+
+	<script src="nwReader.js"></script>
+
+	<script src="vendor/js/underscore.js"></script>
+	<script src="vendor/js/jquery.js"></script>
+	<script src="vendor/js/angular.js"></script>
+
+	<script src="src/Reader.js"></script>
+	<script src="src/core/TextConsumer/TextConsumerService.js"></script>
+	<script src="src/core/TextTimer/TextTimerService.js"></script>
+	<script src="src/Viewer/ViewerController.js"></script>
+	<script src="src/Viewer/ViewerDirective.js"></script>
+</head>
+<body ng-app="Reader">
+	<div ng-controller="ViewerController">
+		<viewer word="currentWord"></viewer>
+		<button ng-click="playFromClipboard()">Play</button>
+		<button ng-click="pause()">Pause</button>
+		<button ng-click="resume()">Resume</button>
+		<button ng-click="increaseFont()">+</button>
+		<button ng-click="decreaseFont()">-</button>
+
+		<select ng-options="wpm for wpm in wpms" ng-model="wpm">
+	</div>
+</body>
+</html>

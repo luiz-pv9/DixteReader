@@ -1,0 +1,56 @@
+.viewer-area {
+	background-image: url(../resources/concrete_seamless.png);
+	border: 2px solid #909090;
+	min-height: 150px;
+}
+
+.content {
+	clear: left;
+	overflow: auto;
+	height: 100%;
+}
+
+.content div {
+	float: left;
+	font-family: 'Droid Sans';
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.top-border {
+	height: 10px;
+	border-bottom: 3px solid #707070;
+}
+
+.bottom-border {
+	height: 10px;
+	border-top: 3px solid #707070;
+}
+
+.top-indicator {
+	width: 3px;
+	height: 7px;
+	background-color: #707070;
+}
+
+.bottom-indicator {
+	width: 3px;
+	height: 7px;
+	background-color: #707070;
+}
+
+.red {
+	color: #FF0000;
+}
+
+button {
+	padding: 4px;
+	font-family: 'Droid Sans';
+	font-weight: bold;
+}
+
+select {
+	padding: 4px;
+	font-family: 'Droid Sans';
+	font-weight: bold;
+}

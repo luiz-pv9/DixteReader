@@ -1,0 +1,16 @@
+{
+	"name": "dixte-reader",
+	"main": "app/index.html",
+	"dependencies": {
+	},
+	"scripts": {
+		"test": "./node_modules/karma/bin/karma start"
+	},
+	"devDependencies": {
+		"karma": "*",
+		"karma-jasmine": "*",
+		"karma-phantomjs-launcher": "*"
+	},
+	"window": {
+	}
+}
