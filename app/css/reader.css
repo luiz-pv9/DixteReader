@@ -1,13 +1,12 @@
 .viewer-area {
 	background-image: url(../resources/concrete_seamless.png);
 	border: 2px solid #909090;
-	min-height: 150px;
+	height: 150px;
 }
 
 .content {
 	clear: left;
 	overflow: auto;
-	height: 100%;
 }
 
 .content div {
@@ -41,16 +40,4 @@
 
 .red {
 	color: #FF0000;
-}
-
-button {
-	padding: 4px;
-	font-family: 'Droid Sans';
-	font-weight: bold;
-}
-
-select {
-	padding: 4px;
-	font-family: 'Droid Sans';
-	font-weight: bold;
 }

@@ -29,6 +29,12 @@ angular.module('Reader')
 				var $red = elm.find('.red');
 				var $afterRed = elm.find('.after-red');
 
+				$(window).resize(function() {
+					var windowHeight = $(window).height();
+					var toolbarHeight = $('.toolbar').height();
+					elm.find('.viewer-area').css('height', windowHeight - toolbarHeight - 60 + "px");
+				});
+
 				scope.clearWordParts = function() {
 					scope.beforeRed = '';
 					scope.red = '';

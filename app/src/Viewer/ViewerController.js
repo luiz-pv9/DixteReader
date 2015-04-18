@@ -34,6 +34,11 @@ angular.module('Reader')
 			$scope.playing = false;
 			$scope.timeoutPromise = null;
 			$scope.currentWord = '';
+			$scope.iterator = null;
+
+			if($scope.minimizeOnFinish) {
+				window.win.minimize();
+			}
 		};
 
 		var readingLoop = function() {
@@ -61,9 +66,20 @@ angular.module('Reader')
 			$scope.timeoutPromise = $timeout(readingLoop, $scope.readingTimeOffset);
 		};
 
+		$scope.togglePlay = function() {
+			if($scope.playing) {
+				$scope.pause();
+			} else {
+				if($scope.iterator === null) {
+					$scope.playFromClipboard();
+				} else {
+					$scope.resume();
+				}
+			}
+		};
+
 		$scope.playFromClipboard = function() {
 			var content = window.clipboard.get('text');
-			console.log(content);
 			$scope.play(content);
 		};
 
@@ -75,11 +91,9 @@ angular.module('Reader')
 		};
 
 		window.tryPauseReading = function() {
-			if($scope.playing) {
-				$scope.pause();
-			} else {
-				$scope.resume();
-			}
+			$scope.$apply(function() {
+				$scope.togglePlay();
+			});
 		};
 
 		$scope.pause = function() {

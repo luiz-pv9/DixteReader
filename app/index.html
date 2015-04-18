@@ -3,6 +3,8 @@
 <head>
 	<title>Dixte Reader - v0.0.1</title>
 
+	<link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/reader.css">
 
 	<script src="nwReader.js"></script>
@@ -18,15 +20,30 @@
 	<script src="src/Viewer/ViewerDirective.js"></script>
 </head>
 <body ng-app="Reader">
-	<div ng-controller="ViewerController">
+	<div ng-controller="ViewerController" class="container">
 		<viewer word="currentWord"></viewer>
-		<button ng-click="playFromClipboard()">Play</button>
-		<button ng-click="pause()">Pause</button>
-		<button ng-click="resume()">Resume</button>
-		<button ng-click="increaseFont()">+</button>
-		<button ng-click="decreaseFont()">-</button>
 
-		<select ng-options="wpm for wpm in wpms" ng-model="wpm">
+		<hr>
+		<div class="toolbar row">
+			<div class="col-md-4 col-xs-4 col-sm-4">
+				<button class="btn btn-primary" ng-click="togglePlay()">
+					<span ng-show="!playing" class="glyphicon glyphicon-play"></span>
+					<span ng-show="playing" class="glyphicon glyphicon-pause"></span>
+				</button>
+				<button class="btn btn-primary" ng-click="increaseFont()">+</button>
+				<button class="btn btn-primary" ng-click="decreaseFont()">-</button>
+
+			</div>
+			<div class="col-md-4 col-xs-4 col-sm-4">
+				<label>
+					<input type="checkbox" ng-model="minimizeOnFinish">
+					<span class="small">Minimizar ao terminar leitura</span>
+				</label>
+			</div>
+			<div class="col-md-4 col-xs-4 col-sm-4">
+				<select class="form-control" ng-options="wpm for wpm in wpms" ng-model="wpm">
+			</div>
+		</div>
 	</div>
 </body>
 </html>
