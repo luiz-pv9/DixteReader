@@ -12,6 +12,6 @@
 		"karma-phantomjs-launcher": "*"
 	},
 	"window": {
-		"toolbar": true
+		"toolbar": false
 	}
 }
