@@ -41,3 +41,16 @@
 .red {
 	color: #FF0000;
 }
+
+.viewer-shadow {
+	height: 50px;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ajax-loader {
+	border: 1px solid red;
+	top: 10px;
+	left: 20px;
+	position: absolute;
+}

@@ -21,7 +21,9 @@
 </head>
 <body ng-app="Reader">
 	<div ng-controller="ViewerController" class="container">
-		<viewer word="currentWord"></viewer>
+
+		<div class="viewer-shadow"></div>
+		<viewer word="currentWord" playing="playing", playing-offset="readingTimeOffset"></viewer>
 
 		<hr>
 		<div class="toolbar row">

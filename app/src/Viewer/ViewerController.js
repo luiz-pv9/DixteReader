@@ -87,7 +87,9 @@ angular.module('Reader')
 		window.showAndReadFromClipboard = function() {
 			window.win.setPosition('center');
 			window.win.focus();
-			$scope.playFromClipboard();
+			$scope.$apply(function() {
+				$scope.playFromClipboard();
+			});
 		};
 
 		window.tryPauseReading = function() {

@@ -20,7 +20,9 @@ angular.module('Reader')
 		return {
 			restrict: 'AE',
 			scope: {
-				word: '='
+				word: '=',
+				playing: '=',
+				playingOffset: '='
 			},
 			template: template,
 			link: function(scope, elm, attrs) {
@@ -29,10 +31,43 @@ angular.module('Reader')
 				var $red = elm.find('.red');
 				var $afterRed = elm.find('.after-red');
 
-				$(window).resize(function() {
+				if(window.win) {
+					window.win.on('focus', function() {
+						elm.focus();
+					});
+				}
+
+				var resizeViewerArea = function() {
+					var width = elm.find('.content').width();
+					scope.middle = width / 4;
 					var windowHeight = $(window).height();
 					var toolbarHeight = $('.toolbar').height();
 					elm.find('.viewer-area').css('height', windowHeight - toolbarHeight - 60 + "px");
+					$('.viewer-shadow').css('left', elm.find('.viewer-area').offset().left);
+					$('.viewer-shadow').css('height', windowHeight - toolbarHeight - 60 + "px");
+					$('.viewer-shadow').css('width', elm.find('.viewer-area').width());
+				};
+
+				scope.$watch('playing', function(val) {
+					if(val) {
+						console.log(scope.middle);
+						$('.viewer-shadow').animate({
+							left: '+=' + scope.middle,
+							width: 0,
+						}, scope.playingOffset - 50, function() {
+							$('.viewer-shadow').hide();
+						});
+					} else {
+						$('.viewer-shadow').show();
+						$('.viewer-shadow').css('left', elm.find('.viewer-area').offset().left);
+						$('.viewer-shadow').css('width', elm.find('.viewer-area').width());
+					}
+				});
+
+				resizeViewerArea();
+
+				$(window).resize(function() {
+					resizeViewerArea();
 				});
 
 				scope.clearWordParts = function() {
@@ -47,8 +82,6 @@ angular.module('Reader')
 				scope.clearWordParts();
 
 				var adjustToWindowSize = function() {
-					var width = elm.find('.content').width();
-					scope.middle = width / 4;
 					elm.find('.top-border').css('height', '40px');
 					elm.find('.top-indicator').css('margin-left', scope.middle);
 					elm.find('.bottom-indicator').css('margin-left', scope.middle);
