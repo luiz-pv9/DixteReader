@@ -13,6 +13,8 @@ $ cd DixteReader && ./reader.sh
 
 > In order to run it, you must have node-webkit executable (nw) in your path.
 
+![alt tag](https://raw.githubusercontent.com/luiz-pv9/DixteReader/master/screenshot.png)
+
 If you run with root privileges, system-wide hotkeys will be enabled to provide
 a better interface. Those hotkeys are:
 
